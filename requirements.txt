@@ -3,3 +3,4 @@ crewai
 langchain_openai
 langchain_community
 toml
+crewai_tools
