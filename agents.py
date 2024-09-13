@@ -49,8 +49,9 @@ class DonorSearchAgents:
             who are likely to support our non-profit organization and other detail about donor.""",
             tools=[search, search_on_website], 
             verbose=True,
-            # max_iterations=100,  
-            # max_execution_time=600,  
+            max_iterations=50,  
+            max_rpm=100,  
+            max_execution_time=3600,  # 1 hour
             llm=self.llm  
         )
         
@@ -67,8 +68,9 @@ class DonorSearchAgents:
             explaining how their contribution will help and why it’s important to support the cause.""",
             tools=[],  
             verbose=True,
-            # max_iterations=100,  
-            # max_execution_time=600,  
+            max_iterations=50,  
+            max_rpm=100,  
+            max_execution_time=3600,  
             llm=self.llm  
         )
         return agent

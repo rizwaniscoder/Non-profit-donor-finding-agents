@@ -14,15 +14,14 @@ class DonorTasks:
             description=dedent(f"""\
                 Search the web for potential donors using the query: '{query}'.
                 Gather contact details, names, and a brief detail about each donor.
-                Retrieve at least 50 donor records to ensure a comprehensive list.
+                Retrieve as many donor records as possible to ensure a comprehensive list.
             """),
             expected_output=dedent("""\
-                A detailed list of dictionaries of at least 50 potential donors, including their contact details 
+                A detailed list of dictionaries of potential donors, including their contact details 
                 (phone number, email, or LinkedIn), along with information about each donor. Example format:
                 [
                     {"name": "John Doe", "email": "john@example.com", "phone number": "+1234567890", "detail about donor": "Here detail of the donor"},
                     {"name": "Jane Smith", "email": "smith@example.com", "phone number": "+123424347890", "detail about donor": "Here detail of the donor"},
-                    // ... (at least 48 more entries)
                 ]
             """),
             agent=self.researcher_agent
