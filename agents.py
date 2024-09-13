@@ -1,35 +1,6 @@
 from crewai import Agent
 from langchain_openai import ChatOpenAI  
-from langchain_community.utilities import SerpAPIWrapper
-from crewai_tools import BrowserbaseLoadTool, tool
-
-browserbase_tool = BrowserbaseLoadTool()
-@tool("Browserbase Search Tool")
-def browserbase_search_tool(url: str) -> str:
-    """
-    Scrapes website content using BrowserbaseLoadTool.
-
-    Args:
-        url (str): The URL of the website to be scraped.
-
-    Returns:
-        str: The scraped content from the website.
-    """
-    return browserbase_tool.run(url)
-
-@tool("Search Tool")
-def my_simple_tool(query: str) -> str:
-    """
-    Executes a search query using the SerpAPIWrapper tool and returns the result.
-
-    Args:
-        query (str): The search query to be executed.
-
-    Returns:
-        str: The result of the search query.
-    """
-    search = SerpAPIWrapper()
-    return search.run(query)
+from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 
 class DonorSearchAgents:
     def __init__(self):
@@ -38,16 +9,14 @@ class DonorSearchAgents:
         """
         Initializes and returns a researcher agent for finding potential donors.
         """
-        search = my_simple_tool
-        search_on_website = browserbase_search_tool
-
-        
+        serper_dev_tool = SerperDevTool()
+        scrape_website_tool = ScrapeWebsiteTool()
         agent = Agent(
             role='Donor Researcher',
             goal='Find potential donors and gather their contact details (phone number, email, or LinkedIn) and information about donor.',
             backstory="""You are responsible for identifying and gathering information on potential donors
             who are likely to support our non-profit organization and other detail about donor.""",
-            tools=[search, search_on_website], 
+            tools=[serper_dev_tool, scrape_website_tool], 
             verbose=True,
             max_iterations=50,  
             max_rpm=100,  

@@ -11,9 +11,8 @@ def load_secrets():
         load_dotenv()
         os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
         os.environ["SERPAPI_API_KEY"] = os.getenv("SERPAPI_API_KEY")
-        os.environ["BROWSERBASE_API_KEY"] = os.getenv("BROWSERBASE_API_KEY")
-        os.environ["BROWSERBASE_PROJECT_ID"] = os.getenv("BROWSERBASE_PROJECT_ID")
-        
+        os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
+    
     except FileNotFoundError:
         st.error("The secrets.toml file was not found.")
         raise
