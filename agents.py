@@ -1,11 +1,8 @@
-import os
 from crewai import Agent
 from langchain_openai import ChatOpenAI  
 from langchain_community.utilities import SerpAPIWrapper
 from crewai_tools import BrowserbaseLoadTool, tool
 
-
-# Initialize BrowserbaseLoadTool
 browserbase_tool = BrowserbaseLoadTool()
 @tool("Browserbase Search Tool")
 def browserbase_search_tool(url: str) -> str:

@@ -8,7 +8,7 @@ import toml
 # Load secrets and set up API keys
 def load_secrets():
     try:
-        secrets = toml.load("secrets.toml")
+        secrets = toml.load("/etc/secrets/secrets.toml")
         os.environ["OPENAI_API_KEY"] = secrets["OPENAI_API_KEY"]
         os.environ["SERPAPI_API_KEY"] = secrets["SERPAPI_API_KEY"]
         os.environ["BROWSERBASE_API_KEY"] = secrets["BROWSERBASE_API_KEY"]
