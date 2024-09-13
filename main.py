@@ -3,16 +3,16 @@ from agents import DonorSearchAgents
 from tasks import DonorTasks
 from crewai import Crew
 import os
-import toml
+from dotenv import load_dotenv
 
 # Load secrets and set up API keys
 def load_secrets():
     try:
-        secrets = toml.load("/etc/secrets/secrets.toml")
-        os.environ["OPENAI_API_KEY"] = secrets["OPENAI_API_KEY"]
-        os.environ["SERPAPI_API_KEY"] = secrets["SERPAPI_API_KEY"]
-        os.environ["BROWSERBASE_API_KEY"] = secrets["BROWSERBASE_API_KEY"]
-        os.environ["BROWSERBASE_PROJECT_ID"] = secrets["BROWSERBASE_PROJECT_ID"]
+        load_dotenv()
+        os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+        os.environ["SERPAPI_API_KEY"] = os.getenv("SERPAPI_API_KEY")
+        os.environ["BROWSERBASE_API_KEY"] = os.getenv("BROWSERBASE_API_KEY")
+        os.environ["BROWSERBASE_PROJECT_ID"] = os.getenv("BROWSERBASE_PROJECT_ID")
         
     except FileNotFoundError:
         st.error("The secrets.toml file was not found.")
