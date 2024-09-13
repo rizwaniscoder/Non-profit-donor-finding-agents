@@ -17,7 +17,6 @@ class DonorSearchAgents:
             backstory="""You are responsible for identifying and gathering information on potential donors
             who are likely to support our non-profit organization and other detail about donor.""",
             tools=[serper_dev_tool, scrape_website_tool], 
-            verbose=True,
             max_iterations=50,  
             max_rpm=100,  
             max_execution_time=3600,  # 1 hour
@@ -36,7 +35,6 @@ class DonorSearchAgents:
             backstory="""You will analyze the collected donor data and write personalized outreach letters to the top potential donors, 
             explaining how their contribution will help and why it’s important to support the cause.""",
             tools=[],  
-            verbose=True,
             max_iterations=50,  
             max_rpm=100,  
             max_execution_time=3600,  
