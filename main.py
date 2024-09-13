@@ -10,7 +10,6 @@ def load_secrets():
     try:
         load_dotenv()
         os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-        os.environ["SERPAPI_API_KEY"] = os.getenv("SERPAPI_API_KEY")
         os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
     
     except FileNotFoundError:
